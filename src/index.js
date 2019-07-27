@@ -1,13 +1,15 @@
 import 'dotenv/config';
 import express from "express";
-import { request } from 'https';
+//import cors from "cors";
 
-const app = express();
+ const app = express();
 
-app.get(`/`, (req, res) => res.send(`Hello World`))
-app.get(`/test`, (req, res) => res.send(`This is test route`))
+// app.use(cors);//cross origin resource sharing
 
-app.listen(3000,()=> console.log(`app listening on port 3000`))
+app.get(`/`, (req, res, next) => res.send(`Hello World`))
+app.get(`/test`, (req, res, next) => res.send(`This is test route`))
+
+app.listen(process.env.PORT,()=> console.log(`app listening on port ${process.env.PORT}`))
 
 
 
